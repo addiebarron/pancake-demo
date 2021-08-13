@@ -1,0 +1,46 @@
+<script context="module">
+  // no client-side routing!
+  export const router = false;
+</script>
+
+<script>
+  import { PostgrestClient } from "@supabase/postgrest-js";
+  import fs from "fs";
+  import csv from "csv-parser";
+
+  // node-schedule task for downloading new CSV files and re-adding them
+
+  // for CSV file in data folder:
+  // https://stackabuse.com/reading-and-writing-csv-files-with-node-js/#readingcsvfilesinnodejs
+  fs.createReadStream("data.csv")
+    .pipe(csv())
+    .on("data", (row) => {
+      // add row to database table for corresponding zip code
+    })
+    .on("end", () => {
+      console.log("CSV file successfully processed");
+    });
+
+  const REST_URL = "http://localhost:5432";
+  const postgrest = new PostgrestClient(REST_URL);
+
+  const zips = [19143, 19144];
+</script>
+
+<main>
+  <h1>Philadelphia COVID-19 Cases by ZIP code</h1>
+  <form action="/" method="GET">
+    <select name="ZIP" id="zipselect">
+      {#each zips as zip}
+        <option value={zip}>{zip}</option>
+      {/each}
+    </select>
+    <input type="submit" />
+  </form>
+  <!-- <iframe
+    name="chart-iframe"
+    title="COVID cases chart"
+    src="/viz"
+    frameborder="0"
+  /> -->
+</main>
