@@ -12,7 +12,7 @@
 
   // for CSV file in data folder:
   // https://stackabuse.com/reading-and-writing-csv-files-with-node-js/#readingcsvfilesinnodejs
-  fs.createReadStream("data.csv")
+  fs.createReadStream("../data/covid_cases_by_zip_2020-06-01.csv")
     .pipe(csv())
     .on("data", (row) => {
       // add row to database table for corresponding zip code

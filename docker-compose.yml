@@ -2,6 +2,10 @@ version: "3"
 services:
   web:
     build: .
+    environment:
+      - APP_ENV=${APP_ENV}
+    volumes:
+      - ./app/src:/app/src
     ports:
       - "5000:3000"
 
