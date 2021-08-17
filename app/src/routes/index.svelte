@@ -36,7 +36,7 @@
       {/each}
     </select>
     <noscript>
-      <input type="submit" />
+      <input type="submit" value="Update chart" />
     </noscript>
   </form>
   <div id="iframe-container">

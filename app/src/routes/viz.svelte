@@ -29,7 +29,6 @@
   export let data, zip;
 </script>
 
-<!-- <h1>{zip}</h1> -->
 <Chart {data} />
 
 <style>

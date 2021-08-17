@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/bin/bash /data/process-data.sh
+bash /data/process-data.sh >> /data-log.txt

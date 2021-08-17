@@ -22,6 +22,10 @@
   }
 </script>
 
+<div class="legend">
+  <p><span class="box blue" />Negative tests</p>
+  <p><span class="box red" />Postive tests</p>
+</div>
 <div class="chart">
   <Pancake.Chart {x1} {x2} {y1} {y2}>
     <Pancake.Grid horizontal count={5} let:value>
@@ -34,19 +38,23 @@
 
     <Pancake.Svg>
       <Pancake.SvgLine data={data.neg} let:d>
-        <path class="data pos" {d} />
+        <path class="data neg" {d} />
       </Pancake.SvgLine>
 
       <Pancake.SvgLine data={data.pos} let:d>
-        <path class="data neg" {d} />
+        <path class="data pos" {d} />
       </Pancake.SvgLine>
     </Pancake.Svg>
   </Pancake.Chart>
 </div>
 
 <style>
+  :root {
+    --legend-red: rgb(255, 65, 65);
+    --legend-blue: rgb(0, 140, 255);
+  }
   .chart {
-    height: 100%;
+    height: calc(100% - 3.5em);
     padding: 1em 1em 1em 2em;
     margin: 0 0 36px 0;
   }
@@ -86,9 +94,25 @@
     fill: none;
   }
   path.data.pos {
-    stroke: rgb(255, 65, 65);
+    stroke: var(--legend-red);
   }
   path.data.neg {
-    stroke: rgb(0, 140, 255);
+    stroke: var(--legend-blue);
+  }
+
+  .legend p {
+    margin: 5px 0;
+  }
+  .legend .box {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 5px;
+  }
+  .legend .box.red {
+    background-color: var(--legend-red);
+  }
+  .legend .box.blue {
+    background-color: var(--legend-blue);
   }
 </style>
