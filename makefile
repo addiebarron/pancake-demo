@@ -7,4 +7,4 @@ prod:
 down:
 	@docker-compose down
 shell:
-	@docker exec -it covid-viz_web_1 bash
+	@docker exec -it covidviz_web_1 bash

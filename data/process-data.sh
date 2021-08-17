@@ -31,9 +31,8 @@ if cd /data; then
       # Fix csv column issues
       firstcol=$(awk -F, "NR==1{print \$3}" $file)
       [[ $firstcol == "POS" ]] && colorder="negative, positive" || colorder="positive, negative"
-      # Do the copying!
+      # Do the copying and let the db know which files we processed.
       cat $file | psqlc "COPY tests(zip, timestamp, $colorder) FROM STDIN WITH DELIMITER ',' NULL AS 'NA' CSV HEADER;" \
-      # And let the db know which files we processed.
       && psqlc "INSERT INTO processed(file) VALUES('$file')"
     else 
       echo "Already processed $file."
