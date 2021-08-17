@@ -6,3 +6,9 @@ services:
       - ./data:/data
       - ./app/src:/app/src
       - ./app/static:/app/static
+  server:
+    ports:
+      - 3000:3000
+  db:
+    ports:
+      - 5432:5432
