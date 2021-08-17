@@ -2,4 +2,3 @@ services:
   web:
     ports:
       - 4999:3000
-    volumes: []

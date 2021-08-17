@@ -1,0 +1,7 @@
+services:
+  web:
+    ports:
+      - 5000:3000
+    volumes:
+      - ./app/src:/app/src
+      - ./app/static:/app/static
