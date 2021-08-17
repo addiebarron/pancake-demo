@@ -5,6 +5,7 @@ services:
     environment:
       APP_ENV: ${APP_ENV}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    restart: always
 
   server:
     image: postgrest/postgrest

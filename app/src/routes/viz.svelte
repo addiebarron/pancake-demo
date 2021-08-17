@@ -4,6 +4,10 @@
     const res = await fetch(`/data/${zip}`);
     const json = await res.json();
 
+    if (!json.length) {
+      let data = null;
+    }
+
     let data = {
       neg: json.map((row) => {
         return {
@@ -29,7 +33,11 @@
   export let data, zip;
 </script>
 
-<Chart {data} />
+{#if data}
+  <Chart {data} />
+{:else}
+  <p>No data for {zip}</p>
+{/if}
 
 <style>
   :global(html, body) {
