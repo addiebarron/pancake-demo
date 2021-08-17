@@ -3,4 +3,6 @@ app/node_modules
 app/build
 app/.svelte-kit
 app/package
+data/tmp/
+data/already_processed.txt
 .env

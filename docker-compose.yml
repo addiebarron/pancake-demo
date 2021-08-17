@@ -3,9 +3,12 @@ services:
   web:
     build: .
     environment:
-      - APP_ENV=${APP_ENV}
+      APP_ENV: ${APP_ENV}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./app/src:/app/src
+      - ./app/static:/app/static
+      - ./data:/data
     ports:
       - "5000:3000"
 
@@ -14,9 +17,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      PGRST_DB_URI: postgres://app_user:password@db:5432/app_db
+      PGRST_DB_URI: postgres://covidviz:${POSTGRES_PASSWORD}@db:5432/database
       PGRST_DB_SCHEMA: public
-      PGRST_DB_ANON_ROLE: app_user #In production this role should not be the same as the one used for the connection
+      PGRST_DB_ANON_ROLE: covidviz #In production this role should not be the same as the one used for the connection
       PGRST_OPENAPI_SERVER_PROXY_URI: "http://127.0.0.1:3000"
     depends_on:
       - db
@@ -26,12 +29,11 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: app_db
-      POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: password
-    # Uncomment this if you want to persist the data.
-    # volumes:
-    #   - "./pgdata:/var/lib/postgresql/data"
+      POSTGRES_DB: database
+      POSTGRES_USER: covidviz
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - covidviz-db-data:/var/lib/postgresql/data
 
   swagger:
     image: swaggerapi/swagger-ui
@@ -41,3 +43,6 @@ services:
       - "8080"
     environment:
       API_URL: http://localhost:3000/
+
+volumes:
+  covidviz-db-data:

@@ -1,6 +1,12 @@
 FROM mhart/alpine-node:16
 
-# Install dependencies
+# Install necessary tools for data processing
+RUN apk --update add bash git postgresql-client
+# Add data processing as a cron job in the container
+RUN npm i -g degit
+COPY cron.sh /etc/periodic/daily/
+
+# Install svelte & dependencies
 WORKDIR /app
 COPY app/package.json app/package-lock.json ./
 RUN npm ci
