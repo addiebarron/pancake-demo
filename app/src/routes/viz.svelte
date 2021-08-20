@@ -1,3 +1,4 @@
+<!-- Data rendering view -- loads inside `chart-iframe` within index.svelte -->
 <script context="module">
   export async function load({ page, fetch }) {
     let zip = page.query.get("zip");
@@ -28,7 +29,7 @@
 </script>
 
 <script>
-  import Chart from "../components/Chart.svelte";
+  import Chart from "$lib/Chart.svelte";
 
   export let data, zip;
 </script>

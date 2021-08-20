@@ -1,3 +1,4 @@
+<!-- Chart generated from two sets of x-y points (positive and negative tests) -->
 <script>
   import * as Pancake from "@sveltejs/pancake";
 

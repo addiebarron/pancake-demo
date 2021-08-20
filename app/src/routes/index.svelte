@@ -1,6 +1,5 @@
+<!-- Homepage -->
 <script>
-  import { onMount } from "svelte";
-
   const zips = [
     19100, 19101, 19102, 19103, 19104, 19105, 19106, 19107, 19108, 19109, 19110,
     19111, 19113, 19114, 19115, 19116, 19118, 19119, 19120, 19121, 19122, 19123,
@@ -13,8 +12,6 @@
   ];
 
   let form;
-
-  const submitForm = (e) => form.submit();
 </script>
 
 <main>
@@ -29,7 +26,7 @@
     My zip code is <select
       name="zip"
       id="zipselect"
-      on:change|preventDefault={submitForm}
+      on:change|preventDefault={() => form.submit()}
     >
       {#each zips as zip}
         <option value={zip}>{zip}</option>
