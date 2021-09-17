@@ -5,11 +5,13 @@
     const res = await fetch(`/data/${zip}`);
     const json = await res.json();
 
+    let data;
+
     if (!json.length) {
-      let data = null;
+      data = null;
     }
 
-    let data = {
+    data = {
       neg: json.map((row) => {
         return {
           x: new Date(row.timestamp),
@@ -23,6 +25,8 @@
         };
       }),
     };
+
+    console.log(data);
 
     return { props: { data, zip } };
   }
@@ -46,5 +50,8 @@
     height: 100%;
     padding: 10px;
     background: white;
+  }
+  :global(body) {
+    padding-bottom: 20px;
   }
 </style>

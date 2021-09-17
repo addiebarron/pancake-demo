@@ -21,6 +21,11 @@
       if (d.y > y2) y2 = d.y;
     });
   }
+
+  function formatDate(val) {
+    const options = { year: "numeric", month: "short" };
+    return new Date(val).toLocaleDateString(undefined, options);
+  }
 </script>
 
 <div class="legend">
@@ -33,8 +38,8 @@
       <div class="grid-line horizontal"><span>{value}</span></div>
     </Pancake.Grid>
 
-    <Pancake.Grid vertical count={2} let:value>
-      <span class="grid-line vertical x-label">{value}</span>
+    <Pancake.Grid vertical count={5} let:value>
+      <span class="grid-line vertical x-label">{formatDate(value)}</span>
     </Pancake.Grid>
 
     <Pancake.Svg>
@@ -57,7 +62,7 @@
   .chart {
     height: calc(100% - 3.5em);
     padding: 1em 1em 1em 2em;
-    margin: 0 0 36px 0;
+    margin: 0 0 50px 0;
   }
 
   .grid-line {
@@ -81,7 +86,7 @@
     position: absolute;
     width: 4em;
     left: -2em;
-    bottom: -22px;
+    bottom: -40px;
     font-family: sans-serif;
     font-size: 14px;
     color: #999;
