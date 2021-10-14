@@ -40,7 +40,7 @@
       <option value="roll">Rolling average</option>
       <option value="norm">Daily counts</option>
       <option value="raw">Total count</option>
-    </select>
+    </select>.
     <noscript>
       <input type="submit" value="Show me" />
     </noscript>
