@@ -4,11 +4,16 @@ FROM mhart/alpine-node:16
 RUN apk --update add bash git postgresql-client
 RUN npm i -g degit
 # Add data processing as a cron job in the container
-COPY cron.sh /etc/periodic/daily/
+COPY cron.sh /etc/periodic/daily/cron.sh
 
 # Copy all local files into the image.
 COPY app/ /app/
 COPY data/ /data/
+
+# Set permissions
+RUN chmod +x /etc/periodic/daily/cron.sh
+RUN chmod +x /data/process-data.sh
+
 # Install svelte & dependencies
 WORKDIR /app
 RUN npm ci
