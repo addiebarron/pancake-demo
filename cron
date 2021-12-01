@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/data/process-data.sh >> /var/log/process-data-log.txt

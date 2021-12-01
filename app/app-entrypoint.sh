@@ -1,7 +1,10 @@
+# Update the database once
+/etc/periodic/daily/cron
+
+# Dev 
 if [[ $APP_ENV == "dev" ]]; then
-    /cron.sh
     npm run dev
+# Prod
 else
-    # do something more production-y
     npm run build && node ./build
 fi
