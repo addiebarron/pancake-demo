@@ -1,8 +1,10 @@
 .DS_Store
-app/node_modules
-app/build
-app/.svelte-kit
+node_modules/
+build/
+dev/
+.svelte-kit/
 app/package
 data/tmp/
 data/already_processed.txt
 .env
+.vscode
